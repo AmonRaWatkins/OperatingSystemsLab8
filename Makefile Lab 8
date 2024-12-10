@@ -1,0 +1,19 @@
+CC = gcc
+CFLAGS = -Wall -std=c99 -g
+
+OBJECTS = mmu.o util.o list.o
+
+mmu: $(OBJECTS)
+	$(CC) $(CFLAGS) -o mmu $(OBJECTS)
+
+mmu.o: mmu.c list.h util.h
+	$(CC) $(CFLAGS) -c mmu.c
+
+util.o: util.c util.h
+	$(CC) $(CFLAGS) -c util.c
+
+list.o: list.c list.h
+	$(CC) $(CFLAGS) -c list.c
+
+clean:
+	rm -f *.o mmu
